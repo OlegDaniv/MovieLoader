@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name">
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+        <item>The Godfather (1972)</item>
+
+    </string-array>
+
+    <string-array name="description">
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+    </string-array>
+</resources>
