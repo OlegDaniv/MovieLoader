@@ -1,7 +1,8 @@
 package com.example.moviesloader;
 
 public interface CallBackAsyncTask {
-    void processCallBack(String output);
-    void processFinished(String finished);
+    void processCallBack();
+    void processFinished();
+    void addProcess(Movie movie);
 
 }

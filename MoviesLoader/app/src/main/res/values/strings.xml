@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">MoviesLoader</string>
     <string name="text_view_title">Please Loading movies</string>
-    <string name="button_name">Show Movies</string>
+    <string name="button_name">Find Movies</string>
 </resources>

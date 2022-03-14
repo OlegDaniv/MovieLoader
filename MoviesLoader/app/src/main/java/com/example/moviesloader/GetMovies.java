@@ -1,8 +1,9 @@
 package com.example.moviesloader;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
-public class GetMovies extends AsyncTask<Void, String, String> {
+public class GetMovies extends AsyncTask<Void, Movie, Movie> {
 
     public CallBackAsyncTask delegate;
 
@@ -12,22 +13,29 @@ public class GetMovies extends AsyncTask<Void, String, String> {
 
     @Override
     protected void onPreExecute() {
-        delegate.processCallBack("Wait...");
+        delegate.processCallBack();
     }
 
     @Override
-    protected String doInBackground(Void... voids) {
-
+    protected Movie doInBackground(Void... voids) {
+        for (Movie movie : Movie.movies) {
+            publishProgress(movie);
             try {
-                Thread.sleep(3000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        return "DONE";
+        }
+        return null;
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        delegate.processFinished(s);
+    protected void onProgressUpdate(Movie... movies) {
+        delegate.addProcess(movies[0]);
+    }
+
+    @Override
+    protected void onPostExecute(Movie movie) {
+        delegate.processFinished();
     }
 }
