@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab66cb0f-531e-4aa9-84cc-a61b26a26339" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MoviesLoader/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MoviesLoader/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/res/anim/recycler_view_animation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/MoviesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/MoviesAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/GetMovies.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/GetMovies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
