@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="name">
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
-        <item>The Godfather (1972)</item>
+        <item>The Godfather\n(1972)</item>
+        <item>The Dark Knight\n(2008)</item>
+        <item>Schindler\'s List\n(1993)</item>
+        <item>Fight Club\n(1999)</item>
+        <item>Forrest Gump\n(1994)</item>
+        <item>The Matrix\n(1999)</item>
+        <item>Star Wars\n(1977)</item>
+        <item>The Pianist\n(2002)</item>
+        <item>Intouchables\n(2011)</item>
+        <item>Django Unchained (2012)</item>
 
 
     </string-array>
 
     <string-array name="description">
         <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
-        <item>The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son. </item>
+        <item>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</item>
+        <item>In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.</item>
+        <item>An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more. </item>
+        <item>The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.</item>
+        <item>When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth—the life he knows is the elaborate deception of an evil cyber-intelligence.</item>
+        <item>Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire\'s world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.</item>
+        <item>A Polish Jewish musician struggles to survive the destruction of the Warsaw ghetto of World War II.</item>
+        <item>After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.</item>
+        <item>With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation-owner in Mississippi.</item>
     </string-array>
 </resources>

@@ -1,9 +1,9 @@
 package com.example.moviesloader;
 
 import android.os.AsyncTask;
-import android.util.Log;
+import java.util.ArrayList;
 
-public class GetMovies extends AsyncTask<Void, Movie, Movie> {
+public class GetMovies extends AsyncTask<Movie, Movie, ArrayList<Movie>> {
 
     public CallBackAsyncTask delegate;
 
@@ -13,12 +13,14 @@ public class GetMovies extends AsyncTask<Void, Movie, Movie> {
 
     @Override
     protected void onPreExecute() {
-        delegate.processCallBack();
+        delegate.downloadStart();
     }
 
     @Override
-    protected Movie doInBackground(Void... voids) {
-        for (Movie movie : Movie.movies) {
+    protected ArrayList<Movie> doInBackground(Movie... passing) {
+        ArrayList<Movie> result = new ArrayList<>();
+        for (Movie movie : passing) {
+            result.add(movie);
             publishProgress(movie);
             try {
                 Thread.sleep(500);
@@ -26,16 +28,16 @@ public class GetMovies extends AsyncTask<Void, Movie, Movie> {
                 e.printStackTrace();
             }
         }
-        return null;
+        return result;
     }
 
     @Override
     protected void onProgressUpdate(Movie... movies) {
-        delegate.addProcess(movies[0]);
+        delegate.downloadOverview(movies[0]);
     }
 
     @Override
-    protected void onPostExecute(Movie movie) {
-        delegate.processFinished();
+    protected void onPostExecute(ArrayList<Movie> result) {
+        delegate.downloadFinished();
     }
 }

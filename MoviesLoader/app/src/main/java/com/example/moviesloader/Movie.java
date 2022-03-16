@@ -1,11 +1,9 @@
 package com.example.moviesloader;
 
-import android.content.Context;
 import java.util.ArrayList;
 
 public class Movie {
 
-    public static ArrayList<Movie> movies = new ArrayList<>();
     private final String name;
     private final String description;
 
@@ -14,12 +12,11 @@ public class Movie {
         this.description = description;
     }
 
-    public static ArrayList<Movie> generateMovies(Context context) {
-        String[] name = context.getResources().getStringArray(R.array.name);
-        String[] description = context.getResources().getStringArray(R.array.description);
-        int minArray = Math.min(name.length, description.length);
+    public static ArrayList<Movie> generateMovies() {
+        int minArray = Math.min(MainActivity.names.length, MainActivity.descriptions.length);
+        ArrayList<Movie> movies = new ArrayList<>(minArray);
         for (int i = 0; i < minArray; i++) {
-            movies.add(new Movie(name[i], description[i]));
+            movies.add(new Movie(MainActivity.names[i], MainActivity.descriptions[i]));
         }
         return movies;
     }
