@@ -2,4 +2,19 @@
     <string name="app_name">MoviesLoader</string>
     <string name="text_view_title">Please Loading movies</string>
     <string name="button_name">Find Movies</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="instructions">Enter a book name to find out who wrote the book. </string>
+    <string name="button_text">Search Books</string>
+    <string name="input_hint">Book Title</string>
+
+    <string name="no_results">"No Results Found"</string>
+    <string name="loading">Loading…</string>
+    <string name="no_search_term">Please enter a search term</string>
+    <string name="no_network">Please check your network connection and try again.</string>
+    <string name="completed">completed</string>
+    <string name="wait_please">Wait please</string>
+    <string name="title_make_your_choose">Make your choose</string>
+    <string name="button_movies_loader">Movies Loader</string>
+    <string name="button_who_write_it">Who Write It</string>
 </resources>

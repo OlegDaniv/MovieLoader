@@ -1,4 +1,4 @@
-package com.example.moviesloader;
+package com.example.moviesloader.movie;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.moviesloader;
+package com.example.moviesloader.movie;
 
 import android.os.AsyncTask;
 import java.util.ArrayList;
