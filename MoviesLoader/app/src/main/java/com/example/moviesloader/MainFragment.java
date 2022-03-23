@@ -11,7 +11,21 @@ import com.example.moviesloader.writer.WhoWroteItFragment;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
+    public final String FRAGMENT_NAME = this.getClass().getName();
     private FragmentMainBinding fragmentMainBinding;
+
+    private static Fragment fragmentDetermination(View view) {
+        Fragment fragment = null;
+        switch (view.getId()) {
+            case R.id.button_who_write_it:
+                fragment = WhoWroteItFragment.newInstance("Who Wrote it");
+                break;
+            case R.id.button_movies_loader:
+                fragment = MovieLoaderFragment.newInstance("Movie loader");
+                break;
+        }
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,21 +38,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Fragment fragment = null;
-        switch (v.getId()) {
-            case R.id.button_who_write_it:
-                fragment = new WhoWroteItFragment();
-                break;
-            case R.id.button_movies_loader:
-                fragment = new MovieLoaderFragment();
-                break;
-        }
-        if (fragment != null) {
-            getParentFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.activity_main_frame_layout, fragment)
-                    .addToBackStack("MainFragment")
-                    .commit();
-        }
+        getParentFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main_frame_layout, fragmentDetermination(v))
+                .addToBackStack(FRAGMENT_NAME)
+                .commit();
     }
 }
+

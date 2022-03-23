@@ -5,15 +5,15 @@ import java.util.ArrayList;
 
 public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
 
-    public CallBackAsyncTask delegate;
+    private OnCallBackAsyncTask delegate;
 
-    public GetMovies(CallBackAsyncTask delegate) {
+    public GetMovies(OnCallBackAsyncTask delegate) {
         this.delegate = delegate;
     }
 
     @Override
     protected void onPreExecute() {
-        delegate.downloadStart();
+        delegate.onDownloadStarted();
     }
 
     @Override
@@ -28,6 +28,6 @@ public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
 
     @Override
     protected void onPostExecute(ArrayList<Movie> result) {
-        delegate.downloadFinished(result);
+        delegate.onDownloadFinished(result);
     }
 }

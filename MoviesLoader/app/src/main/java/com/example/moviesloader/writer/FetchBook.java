@@ -2,15 +2,15 @@ package com.example.moviesloader.writer;
 
 import android.os.AsyncTask;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class FetchBook extends AsyncTask<String, Void, String> {
 
-    WhoWroteItCallBack whoWroteItCallBack;
+    private final OnWhoWroteItCallBack onWhoWroteItCallBack;
 
-    FetchBook(WhoWroteItCallBack whoWroteItCallBack) {
-        this.whoWroteItCallBack = whoWroteItCallBack;
+    FetchBook(OnWhoWroteItCallBack onWhoWroteItCallBack) {
+        this.onWhoWroteItCallBack = onWhoWroteItCallBack;
     }
 
     @Override
@@ -20,35 +20,19 @@ public class FetchBook extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        super.onPostExecute(s);
         try {
             JSONObject jsonObject = new JSONObject(s);
             JSONArray itemsArray = jsonObject.getJSONArray("items");
-            int i = 0;
-            String title = null;
-            String authors = null;
-            while (i < itemsArray.length() &&
-                    (authors == null && title == null)) {
+            ArrayList<Book> books = new ArrayList<>(1);
+            for (int i = 0; i < 1; i++) {
                 JSONObject book = itemsArray.getJSONObject(i);
                 JSONObject volumeInfo = book.getJSONObject("volumeInfo");
-                try {
-                    title = volumeInfo.getString("title");
-                    authors = volumeInfo.getString("authors");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                i++;
+                books.add(new Book(volumeInfo.getString("title"), volumeInfo.getString("authors")));
             }
-            if (title != null && authors != null) {
-                whoWroteItCallBack.postExecute(title, authors);
-            } else {
-                whoWroteItCallBack.postNull();
-            }
-
+            onWhoWroteItCallBack.onExecute(books);
         } catch (Exception e) {
-            whoWroteItCallBack.postNull();
+            onWhoWroteItCallBack.onNotFoundResults();
             e.printStackTrace();
         }
-
     }
 }
