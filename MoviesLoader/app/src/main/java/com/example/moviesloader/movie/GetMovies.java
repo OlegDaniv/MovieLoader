@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
 
-    private OnCallBackAsyncTask delegate;
+    private MoviesDownloadCallback delegate;
 
-    public GetMovies(OnCallBackAsyncTask delegate) {
+    public GetMovies(MoviesDownloadCallback delegate) {
         this.delegate = delegate;
     }
 
@@ -31,3 +31,4 @@ public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
         delegate.onDownloadFinished(result);
     }
 }
+

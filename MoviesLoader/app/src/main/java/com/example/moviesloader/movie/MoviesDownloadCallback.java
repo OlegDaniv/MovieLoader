@@ -2,7 +2,7 @@ package com.example.moviesloader.movie;
 
 import java.util.ArrayList;
 
-public interface OnCallBackAsyncTask {
+public interface MoviesDownloadCallback {
 
     void onDownloadStarted();
 

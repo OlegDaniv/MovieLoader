@@ -14,9 +14,9 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public final String FRAGMENT_NAME = this.getClass().getName();
     private FragmentMainBinding fragmentMainBinding;
 
-    private static Fragment fragmentDetermination(View view) {
+    private static Fragment resolveFragment(int viewID) {
         Fragment fragment = null;
-        switch (view.getId()) {
+        switch (viewID) {
             case R.id.button_who_write_it:
                 fragment = WhoWroteItFragment.newInstance("Who Wrote it");
                 break;
@@ -40,9 +40,10 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         getParentFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main_frame_layout, fragmentDetermination(v))
+                .replace(R.id.activity_main_frame_layout, resolveFragment(v.getId()))
                 .addToBackStack(FRAGMENT_NAME)
                 .commit();
     }
 }
+
 

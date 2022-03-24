@@ -12,7 +12,7 @@ import com.example.moviesloader.R;
 import com.example.moviesloader.databinding.FragmentMovieLoaderBinding;
 import java.util.ArrayList;
 
-public class MovieLoaderFragment extends Fragment implements OnCallBackAsyncTask {
+public class MovieLoaderFragment extends Fragment implements MoviesDownloadCallback {
 
     protected static String[] names = null;
     protected static String[] descriptions = null;
@@ -44,22 +44,22 @@ public class MovieLoaderFragment extends Fragment implements OnCallBackAsyncTask
 
     @Override
     public void onDownloadStarted() {
-        movieLoaderBinding.progressBar.setVisibility(View.VISIBLE);
-        movieLoaderBinding.textView.setText(R.string.wait_please);
+        movieLoaderBinding.progressView.setVisibility(View.VISIBLE);
+        movieLoaderBinding.loadingText.setText(R.string.movie_loader_text_loading);
     }
 
     @Override
     public void onDownloadFinished(ArrayList<Movie> result) {
-        movieLoaderBinding.textView.setText(R.string.completed);
-        movieLoaderBinding.progressBar.setVisibility(View.GONE);
-        movieLoaderBinding.recyclerView.setVisibility(View.VISIBLE);
+        movieLoaderBinding.loadingText.setText(R.string.movie_loader_text_done);
+        movieLoaderBinding.progressView.setVisibility(View.GONE);
+        movieLoaderBinding.moviesListView.setVisibility(View.VISIBLE);
         recyclerViewSetup(result);
 
     }
 
     private void recyclerViewSetup(ArrayList<Movie> arrayList) {
-        movieLoaderBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        movieLoaderBinding.recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        movieLoaderBinding.recyclerView.setAdapter(new MoviesAdapter(arrayList));
+        movieLoaderBinding.moviesListView.setLayoutManager(new LinearLayoutManager(getContext()));
+        movieLoaderBinding.moviesListView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        movieLoaderBinding.moviesListView.setAdapter(new MoviesAdapter(arrayList));
     }
 }

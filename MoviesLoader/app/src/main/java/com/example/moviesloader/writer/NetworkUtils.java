@@ -14,6 +14,9 @@ public class NetworkUtils {
     private static final String QUERY_PARAM = "q";
     private static final String MAX_RESULTS = "maxResults";
     private static final String PRINT_TYPE = "printType";
+    protected static final String NUMBER_RESULTS = "10";
+    private static final String BOOKS = "books";
+    private static final String METHOD_REQUEST = "GET";
 
     static String getBookInfo(String queryString) {
         HttpURLConnection urlConnection = null;
@@ -22,12 +25,12 @@ public class NetworkUtils {
         try {
             Uri builtURI = Uri.parse(BOOK_BASE_URL).buildUpon()
                     .appendQueryParameter(QUERY_PARAM, queryString)
-                    .appendQueryParameter(MAX_RESULTS, "10")
-                    .appendQueryParameter(PRINT_TYPE, "books")
+                    .appendQueryParameter(MAX_RESULTS, NUMBER_RESULTS)
+                    .appendQueryParameter(PRINT_TYPE, BOOKS)
                     .build();
             URL requestURL = new URL(builtURI.toString());
             urlConnection = (HttpURLConnection) requestURL.openConnection();
-            urlConnection.setRequestMethod("GET");
+            urlConnection.setRequestMethod(METHOD_REQUEST);
             urlConnection.connect();
             InputStream inputStream = urlConnection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));

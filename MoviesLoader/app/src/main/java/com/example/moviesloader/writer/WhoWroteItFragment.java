@@ -12,9 +12,9 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import com.example.moviesloader.R;
 import com.example.moviesloader.databinding.FragmentWhoWroteItBinding;
-import java.util.ArrayList;
+import java.util.List;
 
-public class WhoWroteItFragment extends Fragment implements OnWhoWroteItCallBack {
+public class WhoWroteItFragment extends Fragment implements BookResultCallBack {
 
     public final String FRAGMENT_NAME = this.getClass().getName();
     private FragmentWhoWroteItBinding whoWroteItBinding;
@@ -38,14 +38,14 @@ public class WhoWroteItFragment extends Fragment implements OnWhoWroteItCallBack
     }
 
     @Override
-    public void onExecute(ArrayList<Book> books) {
+    public void onExecute(List<Book> books) {
         whoWroteItBinding.titleText.setText(books.get(0).title);
         whoWroteItBinding.authorText.setText(books.get(0).authors);
     }
 
     @Override
     public void onNotFoundResults() {
-        whoWroteItBinding.titleText.setText(R.string.no_results);
+        whoWroteItBinding.titleText.setText(R.string.who_wrote_no_results);
         whoWroteItBinding.authorText.setText("");
     }
 
@@ -58,7 +58,7 @@ public class WhoWroteItFragment extends Fragment implements OnWhoWroteItCallBack
         }
     }
 
-    private boolean checkNetwork() {
+    private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager)
                 getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -68,15 +68,16 @@ public class WhoWroteItFragment extends Fragment implements OnWhoWroteItCallBack
     public void searchBooks() {
         String queryString = whoWroteItBinding.bookInput.getText().toString();
         hideKeyboard();
-        if (!checkNetwork()) {
-            Toast.makeText(getContext(), "Internet not Available", Toast.LENGTH_SHORT).show();
-        }
-        if (queryString.length() == 0) {
-            whoWroteItBinding.titleText.setText(R.string.no_search_term);
-            whoWroteItBinding.authorText.setText("");
-        } else
+        if (isNetworkAvailable() && queryString.length() > 0) {
             new FetchBook(this).execute(queryString);
-        whoWroteItBinding.titleText.setText(R.string.loading);
-        whoWroteItBinding.authorText.setText("");
+            whoWroteItBinding.titleText.setText(R.string.who_wrote_loading);
+            whoWroteItBinding.authorText.setText("");
+        } else if (!isNetworkAvailable()) {
+            Toast.makeText(getContext(), R.string.who_wrote_no_internet, Toast.LENGTH_SHORT).show();
+        } else {
+            whoWroteItBinding.titleText.setText(R.string.who_wrote_no_term);
+            whoWroteItBinding.authorText.setText("");
+        }
+
     }
 }
