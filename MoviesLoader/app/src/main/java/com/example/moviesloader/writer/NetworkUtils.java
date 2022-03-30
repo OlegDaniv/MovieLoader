@@ -6,58 +6,52 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class NetworkUtils {
 
+    protected static final int NUMBER_OF_RESULTS = 10;
     private static final String BOOK_BASE_URL = "https://www.googleapis.com/books/v1/volumes?";
     private static final String QUERY_PARAM = "q";
     private static final String MAX_RESULTS = "maxResults";
     private static final String PRINT_TYPE = "printType";
-    protected static final String NUMBER_RESULTS = "10";
     private static final String BOOKS = "books";
     private static final String METHOD_REQUEST = "GET";
 
-    static String getBookInfo(String queryString) {
-        HttpURLConnection urlConnection = null;
-        BufferedReader reader = null;
-        String bookJSONString = null;
-        try {
-            Uri builtURI = Uri.parse(BOOK_BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, queryString)
-                    .appendQueryParameter(MAX_RESULTS, NUMBER_RESULTS)
-                    .appendQueryParameter(PRINT_TYPE, BOOKS)
-                    .build();
-            URL requestURL = new URL(builtURI.toString());
-            urlConnection = (HttpURLConnection) requestURL.openConnection();
-            urlConnection.setRequestMethod(METHOD_REQUEST);
-            urlConnection.connect();
-            InputStream inputStream = urlConnection.getInputStream();
-            reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder builder = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                builder.append(line);
-                builder.append("\n");
-            }
-            if (builder.length() == 0) {
-                return null;
-            }
-            bookJSONString = builder.toString();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+    protected String getBookInfo(String queryString) throws IOException {
+        URL requestURL = new NetworkUtils().requestURL(queryString);
+        HttpURLConnection urlConnection = new NetworkUtils().urlConnection(requestURL);
+        InputStream inputStream = urlConnection.getInputStream();
+        return new NetworkUtils().stringBuilder(inputStream);
+    }
+
+    private String stringBuilder(InputStream inputStream) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        StringBuilder builder = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            builder.append(line);
+            builder.append("\n");
         }
-        return bookJSONString;
+        return builder.toString();
+    }
+
+    private HttpURLConnection urlConnection(URL requestURL) throws IOException {
+        HttpURLConnection urlConnection = (HttpURLConnection) requestURL.openConnection();
+        urlConnection.setRequestMethod(METHOD_REQUEST);
+        urlConnection.connect();
+        return urlConnection;
+    }
+
+
+    private URL requestURL(String queryParam) throws MalformedURLException {
+        String builtURI = Uri.parse(NetworkUtils.BOOK_BASE_URL).buildUpon()
+                .appendQueryParameter(QUERY_PARAM, queryParam)
+                .appendQueryParameter(MAX_RESULTS, Integer.toString(NetworkUtils.NUMBER_OF_RESULTS))
+                .appendQueryParameter(PRINT_TYPE, NetworkUtils.BOOKS)
+                .build().toString();
+        return new URL(builtURI);
     }
 }
+

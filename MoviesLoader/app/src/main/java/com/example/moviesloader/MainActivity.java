@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setMainFragment() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.activity_main_frame_layout, new MainFragment())
+                .replace(R.id.frame_layout_main_holder, MainFragment.newInstance("Main Fragment"))
                 .commit();
     }
 }

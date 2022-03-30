@@ -1,6 +1,7 @@
 package com.example.moviesloader.movie;
 
 import android.os.AsyncTask;
+import android.util.Log;
 import java.util.ArrayList;
 
 public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
@@ -21,9 +22,9 @@ public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Log.e("GetMovies", "doInBackground", e);
         }
-        return Movie.generateMovies();
+        return new MoviesList().generateMovies();
     }
 
     @Override

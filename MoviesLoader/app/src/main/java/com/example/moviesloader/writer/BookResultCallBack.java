@@ -6,6 +6,6 @@ public interface BookResultCallBack {
 
     void onExecute(List<Book> books);
 
-    void onNotFoundResults();
+    void onResultsNotFound();
 
 }

@@ -6,7 +6,7 @@
     android:background="@color/background_color">
 
     <TextView
-        android:id="@+id/header_title"
+        android:id="@+id/textview_main_fragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button_movies_loader"
+        android:id="@+id/button_main_fragment_movies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -28,10 +28,10 @@
         app:cornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_title" />
+        app:layout_constraintTop_toBottomOf="@id/textview_main_fragment_title" />
 
     <Button
-        android:id="@+id/button_who_write_it"
+        android:id="@+id/button_main_fragment_who_write"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -39,6 +39,6 @@
         app:cornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_movies_loader" />
+        app:layout_constraintTop_toBottomOf="@id/button_main_fragment_movies" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

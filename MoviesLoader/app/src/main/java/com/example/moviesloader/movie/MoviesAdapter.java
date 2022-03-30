@@ -40,8 +40,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.movie_title);
-            description = itemView.findViewById(R.id.movie_description);
+            title = itemView.findViewById(R.id.textview_movie_item_title);
+            description = itemView.findViewById(R.id.textview_movie_item_description);
         }
 
         public void bind(Movie movie) {
