@@ -20,10 +20,10 @@ public class NetworkUtils {
     private static final String METHOD_REQUEST = "GET";
 
     protected String getBookInfo(String queryString) throws IOException {
-        URL requestURL = new NetworkUtils().requestURL(queryString);
-        HttpURLConnection urlConnection = new NetworkUtils().urlConnection(requestURL);
+        URL requestURL = requestURL(queryString);
+        HttpURLConnection urlConnection = urlConnection(requestURL);
         InputStream inputStream = urlConnection.getInputStream();
-        return new NetworkUtils().stringBuilder(inputStream);
+        return stringBuilder(inputStream);
     }
 
     private String stringBuilder(InputStream inputStream) throws IOException {

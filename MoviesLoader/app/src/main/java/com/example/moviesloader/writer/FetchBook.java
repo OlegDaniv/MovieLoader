@@ -12,6 +12,9 @@ public class FetchBook extends AsyncTask<String, Void, String> {
 
     private BookResultCallBack onWhoWroteItCallBack;
 
+    public FetchBook() {
+    }
+
     FetchBook(BookResultCallBack onWhoWroteItCallBack) {
         this.onWhoWroteItCallBack = onWhoWroteItCallBack;
     }
@@ -44,12 +47,19 @@ public class FetchBook extends AsyncTask<String, Void, String> {
         for (int i = 0; i < NetworkUtils.NUMBER_OF_RESULTS; i++) {
             JSONObject book = itemsArray.getJSONObject(i);
             JSONObject volumeInfo = book.getJSONObject("volumeInfo");
-            if (volumeInfo.isNull("authors")) {
-                books.add(new Book(volumeInfo.getString("title"), "The author is unknown"));
-            } else {
-                books.add(new Book(volumeInfo.getString("title"), volumeInfo.getString("authors")));
-            }
+            books.add(CheckBooksAuthors(volumeInfo.optString("title"),
+                    volumeInfo.optString("authors",null)));
         }
         return books;
+    }
+
+    protected Book CheckBooksAuthors(String title, String author) {
+        Book book;
+        if (author == null) {
+            book = new Book(title, "The author is unknown");
+        } else {
+            book = new Book(title, author);
+        }
+        return book;
     }
 }
