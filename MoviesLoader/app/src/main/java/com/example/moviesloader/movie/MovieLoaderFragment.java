@@ -33,7 +33,7 @@ public class MovieLoaderFragment extends Fragment implements MoviesDownloadCallb
         binding = FragmentMovieLoaderBinding.inflate(inflater, container, false);
         binding.buttonFragmentMovieFindMovies.setOnClickListener(v -> {
             setupInitialData();
-            new GetMovies(this).execute(names,descriptions);
+            new GetMovies(this).execute(names, descriptions);
         });
         return binding.getRoot();
     }

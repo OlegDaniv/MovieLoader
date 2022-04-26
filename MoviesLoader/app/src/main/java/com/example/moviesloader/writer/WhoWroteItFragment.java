@@ -33,9 +33,7 @@ public class WhoWroteItFragment extends Fragment implements BookResultCallBack {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentWhoWroteItBinding.inflate(inflater, container, false);
-        binding.buttonWhoWroteSearchBooks.setOnClickListener(v -> {
-            searchBooks();
-        });
+        binding.buttonWhoWroteSearchBooks.setOnClickListener(v -> searchBooks());
         return binding.getRoot();
     }
 

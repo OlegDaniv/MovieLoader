@@ -11,13 +11,12 @@ import java.util.ArrayList;
 public class FetchBook extends AsyncTask<String, Void, String> {
 
     public final String TAG = this.getClass().getName();
-    private BookResultCallBack bookResultCallBack;
-    private NetworkUtils networkUtils;
-    private final String  JSON_ARRAY= "item";
-    private final String  JSON_OBJECT= "volumeInfo";
+    private final String JSON_ARRAY = "items";
+    private final String JSON_OBJECT = "volumeInfo";
     private final String BOOK_TITLE = "title";
     private final String BOOK_AUTHOR = "authors";
     private final String BOOK_AUTHOR_IS_UNKNOWN = "The author is unknown";
+    private BookResultCallBack bookResultCallBack;
 
     public FetchBook() {
     }
