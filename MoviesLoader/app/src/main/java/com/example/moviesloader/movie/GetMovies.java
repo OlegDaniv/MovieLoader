@@ -4,8 +4,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import java.util.ArrayList;
 
-public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
+public class GetMovies extends AsyncTask<String[], Void, ArrayList<Movie>> {
 
+    private static final String TAG = GetMovies.class.getSimpleName();
     private MoviesDownloadCallback delegate;
 
     public GetMovies(MoviesDownloadCallback delegate) {
@@ -18,13 +19,13 @@ public class GetMovies extends AsyncTask<Void, Void, ArrayList<Movie>> {
     }
 
     @Override
-    protected ArrayList<Movie> doInBackground(Void... voids) {
+    protected ArrayList<Movie> doInBackground(String[]... parameters) {
         try {
             Thread.sleep(1500);
         } catch (InterruptedException e) {
-            Log.e("GetMovies", "doInBackground", e);
+            Log.e(TAG, "doInBackground", e);
         }
-        return new MoviesList().generateMovies();
+        return new MoviesList().generateMovies(parameters[0], parameters[1]);
     }
 
     @Override

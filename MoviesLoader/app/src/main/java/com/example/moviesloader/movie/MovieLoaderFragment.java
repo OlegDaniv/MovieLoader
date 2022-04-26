@@ -12,14 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.moviesloader.R;
 import com.example.moviesloader.databinding.FragmentMovieLoaderBinding;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MovieLoaderFragment extends Fragment implements MoviesDownloadCallback {
 
-    protected static String[] names = null;
-    protected static String[] descriptions = null;
     public final String FRAGMENT_NAME = this.getClass().getName();
-    private FragmentMovieLoaderBinding movieLoaderBinding;
+    protected String[] names = null;
+    protected String[] descriptions = null;
+    private FragmentMovieLoaderBinding binding;
 
     public static MovieLoaderFragment newInstance(String text) {
         MovieLoaderFragment fragment = new MovieLoaderFragment();
@@ -31,17 +30,16 @@ public class MovieLoaderFragment extends Fragment implements MoviesDownloadCallb
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        movieLoaderBinding = FragmentMovieLoaderBinding.inflate(inflater, container, false);
-        movieLoaderBinding.buttonFragmentMovieFindMovies.setOnClickListener(v -> {
+        binding = FragmentMovieLoaderBinding.inflate(inflater, container, false);
+        binding.buttonFragmentMovieFindMovies.setOnClickListener(v -> {
             setupInitialData();
-            new GetMovies(this).execute();
+            new GetMovies(this).execute(names,descriptions);
         });
-        return movieLoaderBinding.getRoot();
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        assert getArguments() != null;
         requireActivity().setTitle(getArguments().getString(FRAGMENT_NAME));
     }
 
@@ -52,23 +50,22 @@ public class MovieLoaderFragment extends Fragment implements MoviesDownloadCallb
 
     @Override
     public void onDownloadStarted() {
-        movieLoaderBinding.progressbarFragmentMovieLoading.setVisibility(View.VISIBLE);
-        movieLoaderBinding.textviewFragmentMovieLoadingText.setText(R.string.movie_loader_text_loading);
+        binding.progressbarFragmentMovieLoading.setVisibility(View.VISIBLE);
+        binding.textviewFragmentMovieLoadingText.setText(R.string.movie_loader_text_loading);
     }
 
     @Override
     public void onDownloadFinished(ArrayList<Movie> result) {
-        movieLoaderBinding.textviewFragmentMovieLoadingText.setText(R.string.movie_loader_text_done);
-        movieLoaderBinding.progressbarFragmentMovieLoading.setVisibility(View.GONE);
-        movieLoaderBinding.recyclerviewFragmentMovieListItems.setVisibility(View.VISIBLE);
-        recyclerViewSetup(result);
-
+        binding.textviewFragmentMovieLoadingText.setText(R.string.movie_loader_text_done);
+        binding.progressbarFragmentMovieLoading.setVisibility(View.GONE);
+        binding.recyclerviewFragmentMovieListItems.setVisibility(View.VISIBLE);
+        setupRecyclerView(result);
     }
 
-    private void recyclerViewSetup(ArrayList<Movie> arrayList) {
-        movieLoaderBinding.recyclerviewFragmentMovieListItems.setLayoutManager(new LinearLayoutManager(getContext()));
-        movieLoaderBinding.recyclerviewFragmentMovieListItems.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        movieLoaderBinding.recyclerviewFragmentMovieListItems.setAdapter(new MoviesAdapter(arrayList));
+    private void setupRecyclerView(ArrayList<Movie> arrayList) {
+        binding.recyclerviewFragmentMovieListItems.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerviewFragmentMovieListItems.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        binding.recyclerviewFragmentMovieListItems.setAdapter(new MoviesAdapter(arrayList));
     }
 
 }

@@ -44,7 +44,6 @@ public class NetworkUtils {
         return urlConnection;
     }
 
-
     private URL requestURL(String queryParam) throws MalformedURLException {
         String builtURI = Uri.parse(NetworkUtils.BOOK_BASE_URL).buildUpon()
                 .appendQueryParameter(QUERY_PARAM, queryParam)
@@ -53,5 +52,6 @@ public class NetworkUtils {
                 .build().toString();
         return new URL(builtURI);
     }
+
 }
 

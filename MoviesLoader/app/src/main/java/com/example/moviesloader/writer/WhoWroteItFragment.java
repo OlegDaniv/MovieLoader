@@ -19,7 +19,7 @@ import java.util.List;
 public class WhoWroteItFragment extends Fragment implements BookResultCallBack {
 
     public final String FRAGMENT_NAME = this.getClass().getName();
-    private FragmentWhoWroteItBinding whoWroteItBinding;
+    private FragmentWhoWroteItBinding binding;
 
     public static WhoWroteItFragment newInstance(String text) {
         WhoWroteItFragment fragment = new WhoWroteItFragment();
@@ -32,11 +32,11 @@ public class WhoWroteItFragment extends Fragment implements BookResultCallBack {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        whoWroteItBinding = FragmentWhoWroteItBinding.inflate(inflater, container, false);
-        whoWroteItBinding.buttonWhoWroteSearchBooks.setOnClickListener(v -> {
+        binding = FragmentWhoWroteItBinding.inflate(inflater, container, false);
+        binding.buttonWhoWroteSearchBooks.setOnClickListener(v -> {
             searchBooks();
         });
-        return whoWroteItBinding.getRoot();
+        return binding.getRoot();
     }
 
     @Override
@@ -46,21 +46,21 @@ public class WhoWroteItFragment extends Fragment implements BookResultCallBack {
 
     @Override
     public void onExecute(List<Book> books) {
-        whoWroteItBinding.textviewFragmentWhoWroteBooksName.setText(books.get(0).title);
-        whoWroteItBinding.textviewFragmentWhoWroteAuthorName.setText(books.get(0).authors);
+        binding.textviewFragmentWhoWroteBooksName.setText(books.get(0).getTitle());
+        binding.textviewFragmentWhoWroteAuthorName.setText(books.get(0).getAuthors());
     }
 
     @Override
     public void onResultsNotFound() {
-        whoWroteItBinding.textviewFragmentWhoWroteBooksName.setText(R.string.who_wrote_no_results);
-        whoWroteItBinding.textviewFragmentWhoWroteAuthorName.setText("");
+        binding.textviewFragmentWhoWroteBooksName.setText(R.string.who_wrote_no_results);
+        binding.textviewFragmentWhoWroteAuthorName.setVisibility(View.GONE);
     }
 
     private void hideKeyboard() {
         InputMethodManager inputManager = (InputMethodManager)
                 getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (inputManager != null) {
-            inputManager.hideSoftInputFromWindow(whoWroteItBinding.buttonWhoWroteSearchBooks.getWindowToken(),
+            inputManager.hideSoftInputFromWindow(binding.buttonWhoWroteSearchBooks.getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
     }
@@ -73,17 +73,17 @@ public class WhoWroteItFragment extends Fragment implements BookResultCallBack {
     }
 
     public void searchBooks() {
-        String queryString = whoWroteItBinding.edittextFragmentWhoWrote.getText().toString();
+        String queryString = binding.edittextFragmentWhoWrote.getText().toString();
         hideKeyboard();
         if (isNetworkAvailable() && queryString.length() > 0) {
             new FetchBook(this).execute(queryString);
-            whoWroteItBinding.textviewFragmentWhoWroteBooksName.setText(R.string.who_wrote_loading);
-            whoWroteItBinding.textviewFragmentWhoWroteBooksName.setText("");
+            binding.textviewFragmentWhoWroteBooksName.setText(R.string.who_wrote_loading);
+            binding.textviewFragmentWhoWroteBooksName.setVisibility(View.GONE);
         } else if (!isNetworkAvailable()) {
             Toast.makeText(getContext(), R.string.who_wrote_no_internet, Toast.LENGTH_SHORT).show();
         } else {
-            whoWroteItBinding.textviewFragmentWhoWroteBooksName.setText(R.string.who_wrote_no_term);
-            whoWroteItBinding.textviewFragmentWhoWroteAuthorName.setText("");
+            binding.textviewFragmentWhoWroteBooksName.setText(R.string.who_wrote_no_term);
+            binding.textviewFragmentWhoWroteAuthorName.setVisibility(View.GONE);
         }
     }
 }

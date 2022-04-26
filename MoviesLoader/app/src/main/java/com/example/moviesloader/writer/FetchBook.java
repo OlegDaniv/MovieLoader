@@ -10,13 +10,20 @@ import java.util.ArrayList;
 
 public class FetchBook extends AsyncTask<String, Void, String> {
 
-    private BookResultCallBack onWhoWroteItCallBack;
+    public final String TAG = this.getClass().getName();
+    private BookResultCallBack bookResultCallBack;
+    private NetworkUtils networkUtils;
+    private final String  JSON_ARRAY= "item";
+    private final String  JSON_OBJECT= "volumeInfo";
+    private final String BOOK_TITLE = "title";
+    private final String BOOK_AUTHOR = "authors";
+    private final String BOOK_AUTHOR_IS_UNKNOWN = "The author is unknown";
 
     public FetchBook() {
     }
 
     FetchBook(BookResultCallBack onWhoWroteItCallBack) {
-        this.onWhoWroteItCallBack = onWhoWroteItCallBack;
+        this.bookResultCallBack = onWhoWroteItCallBack;
     }
 
     @Override
@@ -25,7 +32,7 @@ public class FetchBook extends AsyncTask<String, Void, String> {
         try {
             bookJSONString = new NetworkUtils().getBookInfo(strings[0]);
         } catch (IOException e) {
-            Log.e("FetchBook", "doInBackground: ", e);
+            Log.e(TAG, "doInBackground: ", e);
         }
         return bookJSONString;
     }
@@ -33,33 +40,31 @@ public class FetchBook extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         try {
-            onWhoWroteItCallBack.onExecute(generateBooks(s));
+            bookResultCallBack.onExecute(generateBooks(s));
         } catch (JSONException e) {
-            Log.e("FetchBook", "onPostExecute: ", e);
-            onWhoWroteItCallBack.onResultsNotFound();
+            Log.e(TAG, "onPostExecute: ", e);
+            bookResultCallBack.onResultsNotFound();
         }
     }
 
     private ArrayList<Book> generateBooks(String s) throws JSONException {
         JSONObject jsonObject = new JSONObject(s);
-        JSONArray itemsArray = jsonObject.getJSONArray("items");
+        JSONArray itemsArray = jsonObject.getJSONArray(JSON_ARRAY);
         ArrayList<Book> books = new ArrayList<>();
         for (int i = 0; i < NetworkUtils.NUMBER_OF_RESULTS; i++) {
             JSONObject book = itemsArray.getJSONObject(i);
-            JSONObject volumeInfo = book.getJSONObject("volumeInfo");
-            books.add(CheckBooksAuthors(volumeInfo.optString("title"),
-                    volumeInfo.optString("authors",null)));
+            JSONObject volumeInfo = book.getJSONObject(JSON_OBJECT);
+            books.add(resolveBook(volumeInfo.optString(BOOK_TITLE),
+                    volumeInfo.optString(BOOK_AUTHOR, null)));
         }
         return books;
     }
 
-    protected Book CheckBooksAuthors(String title, String author) {
-        Book book;
+    protected Book resolveBook(String title, String author) {
         if (author == null) {
-            book = new Book(title, "The author is unknown");
+            return new Book(title, BOOK_AUTHOR_IS_UNKNOWN);
         } else {
-            book = new Book(title, author);
+            return new Book(title, author);
         }
-        return book;
     }
 }
