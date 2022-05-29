@@ -1,5 +1,19 @@
 <resources>
-    <string name="app_name">MoviesLoader</string>
-    <string name="text_view_title">Please Loading movies</string>
-    <string name="button_name">Find Movies</string>
+    <string name="app_name">Movies Loader</string>
+    <string name="movie_fragment_text_hint">Please loading movies</string>
+    <string name="movie_fragment_button_find">Find movies</string>
+    <string name="movie_loader_text_done">Completed</string>
+    <string name="movie_loader_text_loading">Wait please</string>
+
+    <string name="who_wrote_title_text">Enter a book name to find out who wrote the book. </string>
+    <string name="who_wrote_button_name">Search books</string>
+    <string name="who_wrote_text_hint">Book title</string>
+    <string name="who_wrote_no_results">"No Results Found"</string>
+    <string name="who_wrote_loading">Loading…</string>
+    <string name="who_wrote_no_term">Please enter a search term</string>
+    <string name="who_wrote_no_internet">Internet not Available</string>
+
+    <string name="main_fragment_title">Make your choice</string>
+    <string name="main_fragment_button_movies">Movies Loader</string>
+    <string name="main_fragment_button_who_write">Who Write It</string>
 </resources>

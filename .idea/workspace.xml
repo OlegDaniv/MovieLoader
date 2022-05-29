@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab66cb0f-531e-4aa9-84cc-a61b26a26339" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/GetMovies.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/GetMovies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/GetMovies.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/GetMovies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/MovieLoaderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/MovieLoaderFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/MoviesList.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/movie/MoviesList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/writer/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/writer/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/writer/FetchBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/main/java/com/example/moviesloader/writer/FetchBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/movie/MovieTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/movie/MovieTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/movie/MoviesListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/movie/MoviesListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/writer/BookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/writer/BookTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/writer/FetchBookTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoviesLoader/app/src/test/java/com/example/moviesloader/writer/FetchBookTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

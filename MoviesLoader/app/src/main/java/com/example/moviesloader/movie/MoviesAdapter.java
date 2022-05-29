@@ -1,4 +1,4 @@
-package com.example.moviesloader;
+package com.example.moviesloader.movie;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.moviesloader.R;
 import java.util.ArrayList;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
@@ -39,8 +40,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.movie_title);
-            description = itemView.findViewById(R.id.movie_description);
+            title = itemView.findViewById(R.id.textview_movie_item_title);
+            description = itemView.findViewById(R.id.textview_movie_item_description);
         }
 
         public void bind(Movie movie) {
@@ -49,3 +50,4 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         }
     }
 }
+
